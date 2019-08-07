@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import{ FormBuilder , FormGroup, FormControl} from '@angular/forms';
 
 @Component({
   selector: 'app-login',
@@ -6,10 +7,18 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-
-  constructor() { }
+loginForm:FormGroup;
+  constructor(private fb :FormBuilder) { }
 
   ngOnInit() {
+    this.loginForm= new FormGroup({
+      UserName:new FormControl(),
+      Password: new FormControl()
+    })
   }
+
+  signIn=function(){
+console.log(this.loginForm);
+  };
 
 }
