@@ -1,0 +1,15 @@
+<div id="myDIV" class="header">
+        <h2 style="margin:5px">My To Do List</h2>
+        <input type="text" [(ngModel)]="addTask" id="myInput" placeholder="Title...">
+        <span (click)="newElement()" class="addBtn">Add</span>
+      </div>
+      
+      <ul id="myUL" *ngFor="let task of taskList">
+        <li>{{task.Note}}</li>
+        <!-- <li class="checked">Pay bills</li>
+        <li>Meet George</li>
+        <li>Buy eggs</li>
+        <li>Read a book</li>
+        <li>Organize office</li> -->
+      </ul>
+      
