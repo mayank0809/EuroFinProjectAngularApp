@@ -42,6 +42,19 @@ this.addTask="";
     );
   };
 
+  close(task:any){
+
+    this.taskService.deleteTask(task).subscribe(
+      (data) =>{
+        this.getTask();
+    //this.addTask="";
+    
+      },
+      () =>{}
+    );
+    // alert("Hi");
+  }
+
   
 
 //   var myNodelist = document.getElementsByTagName("LI");

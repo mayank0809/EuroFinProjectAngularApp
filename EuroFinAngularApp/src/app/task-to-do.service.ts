@@ -15,4 +15,8 @@ export class TaskToDoService {
   saveTask(note:any){
     return this.httpClient.post<any>('http://localhost:59692/api/mytodolist',{"Note":note},{});
   }
+
+  deleteTask(note:any){
+    return this.httpClient.delete<any>('http://localhost:59692/api/mytodolist'+'/'+note.Id);
+  }
 }

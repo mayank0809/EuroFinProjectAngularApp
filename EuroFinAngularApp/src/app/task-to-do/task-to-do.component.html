@@ -5,7 +5,7 @@
       </div>
       
       <ul id="myUL" *ngFor="let task of taskList">
-        <li>{{task.Note}}</li>
+        <li>{{task.Note}} <span (click)="close(task)" class="close">×</span></li>
         <!-- <li class="checked">Pay bills</li>
         <li>Meet George</li>
         <li>Buy eggs</li>
