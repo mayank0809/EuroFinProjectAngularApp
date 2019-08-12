@@ -1,56 +1,98 @@
 <div>
-    <div class="row">
-        <div class="col-sm-2">
-    
-        </div>
-    
-        <div class="col-sm-8" style="background-color:#f5f5f5;">
-                  <form class="form-signin" (ngSubmit)="signUp()" [formGroup]="registerForm">
-                        <div class="text-center mb-4">
-                          <img class="mb-4" src="/docs/4.3/assets/brand/bootstrap-solid.svg" alt="" width="72" height="72">
-                          <h1 class="h3 mb-3 font-weight-normal">Floating labels</h1>
-                          <p>Build form controls with floating labels via the <code>:placeholder-shown</code> pseudo-element. <a href="https://caniuse.com/#feat=css-placeholder-shown">Works in latest Chrome, Safari, and Firefox.</a></p>
-                        </div>
+  <div class="row">
+    <div class="col-sm-2">
 
-                        <div class="form-group row input-group">
-                          <label for="inputEmail" class="col-sm-2">Email address</label>
-                          <input type="email" id="inputEmail" class="form-control col-sm-10" placeholder="Email address" formControlName="UserName" autofocus="">
-                        </div>
-
-                        <div class="form-group row input-group">
-                            <label for="inputEmail" class="col-sm-2">Email address</label>
-                            <input type="email" id="inputEmail" class="form-control col-sm-10" placeholder="Email address" formControlName="UserName" autofocus="">
-                          </div>
-                      
-                        <div class="form-group row input-group">
-                          <label for="inputEmail" class="col-sm-2">Email address</label>
-                          <input type="email" id="inputEmail" class="form-control col-sm-10" placeholder="Email address" formControlName="UserName" autofocus="">
-                        </div>
-                      
-                        <div class="form-group row input-group">
-                            <label for="inputPassword" class="col-sm-2">Password</label>
-                          <input type="password" id="inputPassword" class="form-control col-sm-10" placeholder="Password" formControlName="Password" >
-                        </div>
-
-                        <div class="form-group row input-group">
-                            <label for="inputPassword" class="col-sm-2">Password</label>
-                          <input type="password" id="inputPassword" class="form-control col-sm-10" placeholder="Password" formControlName="Password" >
-                        </div>
-                      
-                        <div class="mb-3">
-                          <label>
-                            <label  value="remember-me"> New User?</label>
-                            <a href="#"> Sign Up</a>
-                          </label>
-                        </div>
-                        <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
-                        <p class="mt-5 mb-3 text-muted text-center">© 2017-2019</p>
-                      </form>
-            </div>
-    
-            <div class="col-sm-4">
-    
-                </div>
     </div>
-    
-    </div>  
+
+    <div class="col-sm-8" style="background-color:#f5f5f5;">
+      <form class="form-signin" (ngSubmit)="signUp()" [formGroup]="registerForm">
+        <div class="text-center mb-4">
+          <img class="mb-4" src="/docs/4.3/assets/brand/bootstrap-solid.svg" alt="" width="72" height="72">
+          <h1 class="h3 mb-3 font-weight-normal">Floating labels</h1>
+          <p>Build form controls with floating labels via the <code>:placeholder-shown</code> pseudo-element. <a
+              href="https://caniuse.com/#feat=css-placeholder-shown">Works in latest Chrome, Safari, and Firefox.</a>
+          </p>
+        </div>
+
+        <div class="form-group row input-group">
+          <label for="inputEmail" class="col-sm-2">User Name</label>
+          <input type="email" id="inputEmail" class="form-control col-sm-10" placeholder="User Name"
+            formControlName="UserName" autofocus=""
+
+          [ngClass]="{'is-invalid': (registerForm.get('UserName').touched ||
+          registerForm.get('UserName').dirty) &&
+          !registerForm.get('UserName').valid }" />
+          <span class="invalid-feedback">
+            <span *ngIf="registerForm.get('UserName').errors">
+              Please enter your User name.
+            </span>
+          </span>
+        </div>
+
+        <div class="form-group row input-group">
+          <label for="inputEmail" class="col-sm-2">Email address</label>
+          <input type="email" id="inputEmail" class="form-control col-sm-10" placeholder="Email address"
+            formControlName="EmailId" autofocus=""
+
+            [ngClass]="{'is-invalid': (registerForm.get('EmailId').touched ||
+          registerForm.get('EmailId').dirty) &&
+          !registerForm.get('EmailId').valid }" />
+          <span class="invalid-feedback">
+            <span *ngIf="registerForm.get('EmailId').errors">
+              Please enter your EmailId.
+            </span>
+          </span>
+        </div>
+
+        <div class="form-group row input-group">
+          <label for="inputEmail" class="col-sm-2">Phone</label>
+          <input type="email" id="inputEmail" class="form-control col-sm-10" placeholder="Phone" formControlName="Phone"
+            autofocus=""
+
+            [ngClass]="{'is-invalid': (registerForm.get('Phone').touched ||
+          registerForm.get('Phone').dirty) &&
+          !registerForm.get('Phone').valid }" />
+          <span class="invalid-feedback">
+            <span *ngIf="registerForm.get('Phone').errors">
+              Please enter your Phone.
+            </span>
+          </span>
+        </div>
+
+        <!-- <div class="form-group row input-group">
+                            <label for="inputPassword" class="col-sm-2">Password</label>
+                          <input type="password" id="inputPassword" class="form-control col-sm-10" placeholder="Password" formControlName="Password" >
+                        </div> -->
+
+        <div class="form-group row input-group">
+          <label for="inputPassword" class="col-sm-2">Password</label>
+          <input type="password" id="inputPassword" class="form-control col-sm-10" placeholder="Password"
+            formControlName="Password"
+
+            [ngClass]="{'is-invalid': (registerForm.get('Password').touched ||
+          registerForm.get('Password').dirty) &&
+          !registerForm.get('Password').valid }" />
+          <span class="invalid-feedback">
+            <span *ngIf="registerForm.get('Password').errors">
+              Please enter your Password.
+            </span>
+          </span>
+        </div>
+
+        <div class="mb-3">
+          <label>
+            <label value="remember-me"> New User?</label>
+            <a href="#"> Sign Up</a>
+          </label>
+        </div>
+        <button class="btn btn-lg btn-primary btn-block" type="submit" [disabled]="!registerForm.valid">Sign in</button>
+        <p class="mt-5 mb-3 text-muted text-center">© 2017-2019</p>
+      </form>
+    </div>
+
+    <div class="col-sm-4">
+
+    </div>
+  </div>
+
+</div>
