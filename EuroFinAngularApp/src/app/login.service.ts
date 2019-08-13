@@ -13,12 +13,11 @@ export class LoginService {
   "EmailId": registerForm.EmailId,"PhoneNo":registerForm.Phone,"Password":registerForm.Password},{});
   };
 
-  saveTask(note:any){
-    return this.httpClient.post<any>('http://localhost:59692/api/mytodolist',{"Note":note},{});
+  login(loginForm:any){
+    return this.httpClient.post<any>('http://localhost:59692/api/login',{"UserName":loginForm.UserName,
+  "Password":loginForm.Password},{});
   }
 
-  deleteTask(note:any){
-    return this.httpClient.delete<any>('http://localhost:59692/api/mytodolist'+'/'+note.Id);
-  }
+  user:any;
 
 }

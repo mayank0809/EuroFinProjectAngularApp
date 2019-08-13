@@ -1,41 +1,59 @@
 <div>
-    <div class="row">
-        <div class="col-sm-4">
-    
-        </div>
-    
-        <div class="col-sm-4" style="background-color:#f5f5f5;">
-                <form class="form-signin" (ngSubmit)="signIn()" [formGroup]="loginForm">
-                        <div class="text-center mb-4">
-                          <img class="mb-4" src="/docs/4.3/assets/brand/bootstrap-solid.svg" alt="" width="72" height="72">
-                          <h1 class="h3 mb-3 font-weight-normal">Floating labels</h1>
-                          <p>Build form controls with floating labels via the <code>:placeholder-shown</code> pseudo-element. <a href="https://caniuse.com/#feat=css-placeholder-shown">Works in latest Chrome, Safari, and Firefox.</a></p>
-                        </div>
-                      
-                        <div class="form-label-group">
-                          <input type="email" id="inputEmail" class="form-control" placeholder="Email address" formControlName="UserName" autofocus="">
-                          <label for="inputEmail">Email address</label>
-                        </div>
-                      
-                        <div class="form-label-group">
-                          <input type="password" id="inputPassword" class="form-control" placeholder="Password" formControlName="Password" >
-                          <label for="inputPassword">Password</label>
-                        </div>
-                      
-                        <div class="mb-3">
-                          <label>
-                            <label  value="remember-me"> New User?</label>
-                            <a href="#"> Sign Up</a>
-                          </label>
-                        </div>
-                        <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
-                        <p class="mt-5 mb-3 text-muted text-center">© 2017-2019</p>
-                      </form>
-            </div>
-    
-            <div class="col-sm-4">
-    
-                </div>
+  <div class="row">
+    <div class="col-sm-4">
+
     </div>
-    
-    </div>  
+
+    <div class="col-sm-4" style="background-color:#f5f5f5;">
+      <form class="form-signin" (ngSubmit)="signIn()" [formGroup]="loginForm">
+        <div class="text-center mb-4">
+          <img class="mb-4" src="/docs/4.3/assets/brand/bootstrap-solid.svg" alt="" width="72" height="72">
+          <h1 class="h3 mb-3 font-weight-normal">Floating labels</h1>
+          <p>Build form controls with floating labels via the <code>:placeholder-shown</code> pseudo-element. <a
+              href="https://caniuse.com/#feat=css-placeholder-shown">Works in latest Chrome, Safari, and Firefox.</a>
+          </p>
+        </div>
+
+        <div class="form-label-group">
+          <input type="email" id="inputEmail" class="form-control" placeholder="Email address"
+            formControlName="UserName" autofocus="" [ngClass]="{'is-invalid': (
+                          loginForm.get('UserName').dirty) &&
+                          !loginForm.get('UserName').valid }" />
+          <span class="invalid-feedback">
+            <span *ngIf="loginForm.get('UserName').errors">
+              Please enter your User Name.
+            </span>
+          </span>
+        <label for="inputEmail">Email address</label>
+    </div>
+
+    <div class="form-label-group">
+      <input type="password" id="inputPassword" class="form-control" placeholder="Password" formControlName="Password"
+        [ngClass]="{'is-invalid': (loginForm.get('Password').touched ||
+                          loginForm.get('Password').dirty) &&
+                          !loginForm.get('Password').valid }" />
+      <span class="invalid-feedback">
+        <span *ngIf="loginForm.get('Password').errors">
+          Please enter your Password.
+        </span>
+      </span>
+    <label for="inputPassword">Password</label>
+  </div>
+
+  <div class="mb-3">
+    <label>
+      <label value="remember-me"> New User?</label>
+      <a [routerLink]="'/register'"> Sign Up</a>
+    </label>
+  </div>
+  <button class="btn btn-lg btn-primary btn-block" type="submit" [disabled]="!loginForm.valid">Sign in</button>
+  <p class="mt-5 mb-3 text-muted text-center">© 2017-2019</p>
+  </form>
+</div>
+
+<div class="col-sm-4">
+
+</div>
+</div>
+
+</div>

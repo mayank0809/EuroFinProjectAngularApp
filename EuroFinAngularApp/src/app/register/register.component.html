@@ -19,7 +19,7 @@
           <input type="email" id="inputEmail" class="form-control col-sm-10" placeholder="User Name"
             formControlName="UserName" autofocus=""
 
-          [ngClass]="{'is-invalid': (registerForm.get('UserName').touched ||
+          [ngClass]="{'is-invalid': (
           registerForm.get('UserName').dirty) &&
           !registerForm.get('UserName').valid }" />
           <span class="invalid-feedback">
@@ -81,8 +81,8 @@
 
         <div class="mb-3">
           <label>
-            <label value="remember-me"> New User?</label>
-            <a href="#"> Sign Up</a>
+            <label value="remember-me"> Existing User?</label>
+            <a [routerLink]="'/login'"> Sign In</a>
           </label>
         </div>
         <button class="btn btn-lg btn-primary btn-block" type="submit" [disabled]="!registerForm.valid">Sign in</button>
