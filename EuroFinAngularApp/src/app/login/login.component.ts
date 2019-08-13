@@ -10,6 +10,8 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
 loginForm:FormGroup;
+private message:any;
+
   constructor(private fb :FormBuilder, private loginService :LoginService, private router:Router) { }
 
   ngOnInit() {
@@ -25,12 +27,23 @@ console.log(this.loginForm);
 this.loginService.login(this.loginForm.value).subscribe(
   (data)=>{
     this.loginService.user=data;
-    if(data!= null){
+    if(data.UserName!= null){
 this.router.navigate(['/','tasktodo']);
+    }else{
+      this.setMessage("UserName and Passowrd do not match", 7000);
     }
   },
   ()=>{}
 );
   };
+
+  setMessage(message:string,time:number){
+
+    this.message=message;
+
+            setTimeout(()=>{
+              this.message="";
+            },time);
+  }
 
 }

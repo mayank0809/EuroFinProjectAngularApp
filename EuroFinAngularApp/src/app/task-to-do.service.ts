@@ -8,12 +8,12 @@ export class TaskToDoService {
 
   constructor(private httpClient : HttpClient) { }
 
-  getTask(){
-    return this.httpClient.get<any>('http://localhost:59692/api/mytodolist');
+  getTask(userName:any){
+    return this.httpClient.get<any>('http://localhost:59692/api/mytodolist/getTaskByUser'+"/"+userName);
   };
 
-  saveTask(note:any){
-    return this.httpClient.post<any>('http://localhost:59692/api/mytodolist',{"Note":note},{});
+  saveTask(userName:any , note:any){
+    return this.httpClient.post<any>('http://localhost:59692/api/mytodolist',{"Note":note,"UserName":userName},{});
   }
 
   deleteTask(note:any){

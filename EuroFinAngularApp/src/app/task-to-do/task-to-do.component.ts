@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { TaskToDoService } from '../task-to-do.service';
+import { LoginService } from '../login.service';
+import { Route } from '@angular/compiler/src/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-task-to-do',
@@ -12,17 +15,30 @@ export class TaskToDoComponent implements OnInit {
 
   public addTask:any;
 
-  constructor(private taskService : TaskToDoService) { }
+  public userName:any;
+
+  constructor(private taskService : TaskToDoService,private loginService:LoginService , private router:Router) { }
 
   ngOnInit() {
-this.getTask();
+
+ 
+
+if(this.loginService.user){
+  this.userName=this.loginService.user.UserName;
+
+  this.getTask(this.userName);
+  
+}else{
+
+  this.router.navigate(['/','login']);
+}
     
   }
 
   newElement(){
-this.taskService.saveTask(this.addTask).subscribe(
+this.taskService.saveTask(this.userName, this.addTask).subscribe(
   (data) =>{
-    this.getTask();
+    this.getTask(this.userName);
 this.addTask="";
 
   },
@@ -31,9 +47,9 @@ this.addTask="";
     // alert("Hi");
   };
 
-  getTask(){
+  getTask(userName:any){
 
-    this.taskService.getTask().subscribe(
+    this.taskService.getTask(userName).subscribe(
       
       (data) =>{
     this.taskList=data;
@@ -46,7 +62,7 @@ this.addTask="";
 
     this.taskService.deleteTask(task).subscribe(
       (data) =>{
-        this.getTask();
+        this.getTask(this.userName);
     //this.addTask="";
     
       },
