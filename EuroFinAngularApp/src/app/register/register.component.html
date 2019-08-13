@@ -7,10 +7,9 @@
     <div class="col-sm-8" style="background-color:#f5f5f5;">
       <form class="form-signin" (ngSubmit)="signUp()" [formGroup]="registerForm">
         <div class="text-center mb-4">
-          <img class="mb-4" src="/docs/4.3/assets/brand/bootstrap-solid.svg" alt="" width="72" height="72">
-          <h1 class="h3 mb-3 font-weight-normal">Floating labels</h1>
-          <p>Build form controls with floating labels via the <code>:placeholder-shown</code> pseudo-element. <a
-              href="https://caniuse.com/#feat=css-placeholder-shown">Works in latest Chrome, Safari, and Firefox.</a>
+          <!-- <img class="mb-4" src="/docs/4.3/assets/brand/bootstrap-solid.svg" alt="" width="72" height="72"> -->
+          <h1 class="h3 mb-3 font-weight-normal">Registration Page</h1>
+          <p>Please provide below detail to register.
           </p>
         </div>
 
@@ -90,7 +89,7 @@
           {{message}}
         </span>
 
-        <button class="btn btn-lg btn-primary btn-block" type="submit" [disabled]="!registerForm.valid">Sign in</button>
+        <button class="btn btn-lg btn-primary btn-block" type="submit" [disabled]="!registerForm.valid">Sign Up</button>
         <p class="mt-5 mb-3 text-muted text-center">© 2017-2019</p>
       </form>
     </div>

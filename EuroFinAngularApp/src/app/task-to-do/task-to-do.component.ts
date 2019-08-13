@@ -27,7 +27,7 @@ if(this.loginService.user){
   this.userName=this.loginService.user.UserName;
 
   this.getTask(this.userName);
-  
+
 }else{
 
   this.router.navigate(['/','login']);
@@ -42,7 +42,9 @@ this.taskService.saveTask(this.userName, this.addTask).subscribe(
 this.addTask="";
 
   },
-  () =>{}
+  (error) =>{
+    console.log(error);
+  }
 );
     // alert("Hi");
   };
@@ -54,7 +56,9 @@ this.addTask="";
       (data) =>{
     this.taskList=data;
       },
-      () =>{}
+      (error) =>{
+        console.log(error);
+      }
     );
   };
 

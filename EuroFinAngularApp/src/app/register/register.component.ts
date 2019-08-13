@@ -40,7 +40,7 @@ private message:any;
         }else{
         this.loginService.register(this.registerForm.value).subscribe(
           (data) =>{
-            this.message="User register successfully";
+            this.message="User registered successfully";
             setTimeout(()=>{
               this.message="";
             },7000);
