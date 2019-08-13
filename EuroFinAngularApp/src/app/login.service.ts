@@ -20,4 +20,8 @@ export class LoginService {
 
   user:any;
 
+  ExistingUser(loginForm:any){
+    return this.httpClient.get<any>('http://localhost:59692/api/register/getuser'+'/'+loginForm.UserName);
+  }
+
 }

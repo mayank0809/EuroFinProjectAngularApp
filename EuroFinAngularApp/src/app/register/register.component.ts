@@ -9,6 +9,8 @@ import { LoginService } from '../login.service';
 })
 export class RegisterComponent implements OnInit {
 private registerForm:FormGroup;
+private message:any;
+
   constructor(private fb:FormBuilder,private loginService:LoginService) { }
 
   ngOnInit() {
@@ -27,10 +29,25 @@ private registerForm:FormGroup;
     }
     // alert("Hi");
 
-    this.loginService.register(this.registerForm.value).subscribe(
+    this.loginService.ExistingUser(this.registerForm.value).subscribe(
       (data) =>{
-        //this.getTask();
-    //this.addTask="";
+        if(data!=""){
+            this.message="User Id already Used, please use new user id";
+
+            setTimeout(()=>{
+              this.message="";
+            },7000);
+        }else{
+        this.loginService.register(this.registerForm.value).subscribe(
+          (data) =>{
+            this.message="User register successfully";
+            setTimeout(()=>{
+              this.message="";
+            },7000);
+          },
+          () =>{}
+        );
+      };
     
       },
       () =>{}
