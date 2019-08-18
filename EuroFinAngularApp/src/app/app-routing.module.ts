@@ -10,7 +10,8 @@ const routes: Routes = [
   {path:'register',component:RegisterComponent},
   {path:'Home',component:TaskToDoComponent},
 
-  {path:'tasktodo', component:TaskToDoComponent}
+  {path:'tasktodo', component:TaskToDoComponent},
+  {path:'',redirectTo:'/login',pathMatch:'full'}
 ];
 
 @NgModule({
